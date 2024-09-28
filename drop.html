@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Scrollbar Dropdown Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .dropdown-container {
+      position: relative;
+      display: inline-block;
+      margin: 20px;
+    }
+
+    /* Dropdown button */
+    .dropdown-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Dropdown content initially hidden */
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f1f1f1;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden; /* Prevents scrollbar by default */
+      visibility: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      z-index: 1;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Show dropdown on hover with smooth transition */
+    .dropdown-container:hover .dropdown-content {
+      max-height: 200px; /* Max height of the dropdown before scrolling */
+      visibility: visible;
+      opacity: 1;
+      overflow: hidden; /* Initially hidden to prevent scrollbar flash */
+    }
+
+    /* Enable scrolling only when necessary */
+    .dropdown-container:hover .dropdown-content[data-overflow="true"] {
+      overflow-y: auto; /* Enable scrolling only if content exceeds max-height */
+    }
+
+    /* Styled Scrollbar for dropdown */
+    .dropdown-content::-webkit-scrollbar {
+      width: 12px; /* Thicker scrollbar width */
+    }
+
+    .dropdown-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 6px;
+      border: 3px solid #f1f1f1; /* Adds space around the thumb */
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+    /* Dropdown list items */
+    .dropdown-content div {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+
+    .dropdown-content div:hover {
+      background-color: #ddd;
+    }
+
+    /* Smooth transition for background-color */
+    .dropdown-content div {
+      transition: background-color 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="dropdown-container">
+  <button class="dropdown-btn">Dropdown Menu</button>
+  <div class="dropdown-content" id="dropdown">
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+    <div>Item 4</div>
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+    <div>Item 4</div>
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+    <div>Item 4</div>
+  </div>
+</div>
+
+<!-- Append rows script -->
+<script>
+  // Append new items to the dropdown dynamically
+  function addItem(text) {
+    const dropdown = document.getElementById('dropdown');
+    const newItem = document.createElement('div');
+    newItem.textContent = text;
+    dropdown.appendChild(newItem);
+    checkContentHeight();
+  }
+
+  // Check if content exceeds the max height and toggle scrolling
+  function checkContentHeight() {
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown.scrollHeight > 200) {
+      dropdown.setAttribute('data-overflow', 'true'); // Enable scrolling
+    } else {
+      dropdown.setAttribute('data-overflow', 'false'); // No scrolling needed
+    }
+  }
+
+  // Example: Automatically append a new row after 2 seconds
+  setTimeout(() => addItem('New Item 5'), 2000);
+
+  // Check initially
+  checkContentHeight();
+</script>
+
+</body>
+</html>

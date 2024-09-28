@@ -1,0 +1,22 @@
+html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Ensure it takes up full height */
+    /* overflow: hidden; Prevent scrollbars */
+    background: rgb(4, 13, 37);
+    background: linear-gradient(0deg, rgba(4, 13, 37, 1) 40%, rgba(14, 51, 85, 1) 85%);
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height for centering */
+}
+
+#auth-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}

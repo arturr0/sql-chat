@@ -1,0 +1,807 @@
+body {
+  background: rgb(4,13,37);
+  background: linear-gradient(0deg, rgba(4,13,37,1) 40%, rgba(14,51,85,1) 85%);
+  padding: 0;
+  margin: 0;
+  color: white
+}
+button {
+  color: #fff;
+  background-color: #38D2D2;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  /* font-weight: bold; */
+  border: 0;
+  user-select: none;
+  cursor: pointer;
+  /* padding: 5px; */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  
+}
+button:hover {
+  opacity: 0.5;
+}
+.icon-user-plus, .icon-comment, .icon-block-1 {
+  color: black;
+}
+/* For WebKit browsers (Chrome, Safari, newer Edge) */
+#message-container::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+  
+}
+.icon-spin3 {
+  margin: auto;
+  align-self: center;
+}
+#users {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+/* For WebKit browsers (Chrome, Safari, newer Edge) */
+#message-container::-webkit-scrollbar {
+  width: 10px; /* Set the width of the scrollbar */
+  
+}
+.display {
+  display: none;
+}
+#search-input {
+  align-self: center;
+}
+
+.user {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin: 10px 0; /* Add space between user entries */
+}
+
+.profile-container {
+    position: relative; /* Establish a positioning context */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 40px; /* Fixed width for alignment */
+    height: 40px; /* Fixed height for alignment */
+    margin-left: 10px;
+}
+.loading-placeholder, .initials, .profile-image {
+    position: absolute; /* Allow overlap without layout shift */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 40px; /* Consistent width */
+    height: 40px; /* Consistent height */
+    border-radius: 50%; /* Make it a circle */
+}
+.initials {
+    display: flex; /* Flexbox for centering text */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 40px; /* Same size as the image */
+    height: 40px; /* Same size as the image */
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(24,26,138,1) 100%);
+    border-radius: 50%; /* Make it a circle */
+    font-weight: bold; /* Make initials bold */
+    color: white; /* Change color as needed */
+}
+
+/* .loading-placeholder {
+    background-color: #ccc; /* Placeholder background color */
+/* } */
+.initials {
+    /* display: flex; Flexbox for centering text */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    font-weight: bold; /* Make initials bold */
+    color: white; /* Change color as needed */
+}
+.user-info {
+    display: flex;
+    flex-direction: column; /* Stack username and buttons vertically */
+    /* align-items: center; Center buttons horizontally */
+    width: 100px;
+    margin-left: 10px;
+}
+
+.buttons {
+    display: flex;
+    /* justify-content: center; Center buttons horizontally */
+    gap: 5px; /* Space between buttons */
+}
+/* 
+
+
+/* Scrollbar thumb */
+#message-container::-webkit-scrollbar-thumb {
+  background-color: darkgray; /* Color of the scrollbar thumb */
+  
+}
+
+/* Scrollbar track */
+#message-container::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+/* For Firefox */
+#message-container {
+  scrollbar-width: thin; /* Sets the scrollbar to be thin (default option) */
+  scrollbar-color: darkgray transparent; /* Color of the scrollbar thumb and track */
+}
+
+/* For Internet Explorer and Edge (legacy) */
+#message-container {
+  -ms-overflow-style: scrollbar; /* Sets the scrollbar to be visible */
+}
+@font-face {
+  font-family: 'fontello';
+  src: url('fontello.woff2') format('woff2'),
+       url('fontello.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+h1 a {
+  color: red;
+}
+#mainContent {
+  position: relative;
+  z-index: 0;
+}
+#menu {
+  width: 100vw;
+  height: calc(10vh - 1px);
+  background: transparent;
+  display: flex;
+  /* border-bottom: solid 1px #3f5efb;
+  box-shadow: 0 4px 3px -2px #3f5efb; */
+  background: rgb(4,13,37);
+background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
+  
+}
+#menuDiv {
+  display: flex;
+  /* width: 75vw; */
+  justify-content: end;
+  margin: auto;
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown content initially hidden */
+.dropdown-content {
+  position: absolute;
+  width: 10vw;
+  max-height: 0;
+  overflow: hidden; /* Prevents scrollbar by default */
+  visibility: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Show dropdown on hover with smooth transition */
+.dropdown-container:hover .dropdown-content,
+.dropdown-content:hover {
+  max-height: 200px; /* Max height of the dropdown before scrolling */
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden; /* Initially hidden to prevent scrollbar flash */
+}
+
+/* Sliding line effect */
+.dropdownToggle {
+  position: relative;
+  width: 10vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownToggle::before {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Position the line at the bottom */
+  left: 0;
+  height: 2px;
+  width: 0%; /* Initially no line */
+  background-color: #3f5efb; /* Line color */
+  transition: width 0.4s ease, left 0.4s ease;
+}
+
+.dropdown-container:hover .dropdownToggle::before {
+  width: 100%; /* Full width on hover */
+}
+
+.dropdownToggle:active::before {
+  left: 100%; /* Start sliding to the right */
+  width: 0%; /* Collapse the line */
+}
+
+/* Enable scrolling only when necessary */
+.dropdown-container:hover .dropdown-content[data-overflow="true"] {
+  overflow-y: auto; /* Enable scrolling only if content exceeds max-height */
+}
+
+/* Styled Scrollbar for dropdown */
+.dropdown-content::-webkit-scrollbar {
+  width: 12px; /* Thicker scrollbar width */
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1; /* Adds space around the thumb */
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Dropdown list items */
+.dropdown-content div {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.dropdown-content div:hover {
+  background-color: #ddd;
+}
+
+/* Smooth transition for background-color */
+.dropdown-content div {
+  transition: background-color 0.3s ease;
+}
+
+#friends_chat_account {
+  display: flex;
+}
+.menuIcon {
+  font-size: 40px;
+}
+#friends {
+  width: calc(25vw - 1px);
+  /* border-right: solid 1px whitesmoke; */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
+  background: rgb(4,13,37);
+  background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(16,82,144,1) 85%);
+}
+#friends.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0s; /* Ensure visibility is instant when shown */
+}
+#typingIndicator {
+  display: none;
+  color: green;
+}
+#inputAndIcons {
+  display: flex;
+  margin-bottom: 10px;
+  width: 80%;
+  
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+#chatContainer {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
+  height: 90vh;
+  width: calc(50vw - 1px);
+  /* border-right: solid 1px #3f5efb;
+  border-left: solid 1px #3f5efb;
+  box-shadow: 
+    -4px 0px 6px 0px rgba(63, 94, 251, 0.5), 
+    4px 0px 6px 0px rgba(63, 94, 251, 0.5) inset;  */
+
+}
+#message-container {
+  overflow: auto;
+}
+#account {
+  width: 25vw;
+  height: 90vh;
+  /* background: #ccc; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  background: rgb(4,13,37);
+  background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(16,82,144,1) 85%);
+}
+#avatarOrInitials {
+  margin-top: 50px;
+}
+#accountContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+#crypto {
+  white-space: nowrap;
+}
+.accountContentText {
+  margin: 10px;
+  
+  font-size: 20px;
+  display: flex;
+  
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.accountContentText:hover {
+  text-decoration: underline;
+  cursor: pointer; /* Optional: adds a pointer cursor for better UX */
+}
+.accIon {
+  margin-left: auto;
+}
+#initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border: solid 1px none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(24,26,138,1) 100%);
+}
+#avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border: solid 1px none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display {
+  display: none;
+}
+.custom-file-label {
+  display: inline-block;
+  /* padding: 8px 12px; */
+  /* background-color: transparent; */
+  color: white;
+  cursor: pointer;
+  border: none;
+  /* font-size: 16px; */
+  /* text-decoration: underline; */
+}
+
+.custom-file-label:hover {
+  color: #0056b3;
+}
+
+/* #messagesContainer {
+  margin-bottom: 10px;
+} */
+#chat {
+  display: flex;
+  flex-direction: column; /* Stack items from top to bottom */
+  /* width: 60vw; */
+  height: 100%; /* Controls overall height of the chat */
+  /* background-color: rgb(176, 196, 222); */
+  overflow-y: auto; /* Show scrollbar when necessary */
+  position: relative; /* Ensures proper stacking and layout */
+  min-height: 0; /* Prevents overflow issues */
+  padding: 0; /* Optional padding around chat */
+  overflow: hidden;
+}
+#receiver {
+  margin-bottom: auto;
+  height: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+
+  /* background: blue; */
+}
+#receiverAvatar {
+  width: 40px;
+  height: 40px;
+}
+#receiverAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#receiverInitials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(24,26,138,1) 100%);
+  border-radius: 50%; /* Make it a circle */
+  font-weight: bold; /* Make initials bold */
+  color: white; /* Change color as needed */
+}
+#receiverName {
+  margin-top: auto;
+  margin-right: 10px;
+
+}
+.icon-keyboard {
+  margin-top: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
+}
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;  
+}
+.message {
+  /* background-color: white; Example background color */
+  padding: 10px; /* Example padding */
+  border-radius: 5px; /* Optional rounded corners */
+  /* No margin for spacing */
+}
+
+.bu:last-child {
+  margin-top: auto; /* Push the last message to the bottom */
+}
+
+.message {
+  /* Style for individual messages */
+  /* background-color: white; Example background color */
+  padding: 10px; /* Example padding */
+  border-radius: 5px; /* Optional rounded corners */
+}
+
+
+/* Last child or message element */
+.message {
+  margin-top: auto; /* Pushes this element to the bottom */
+}
+
+
+/* Last child or message element */
+.message {
+  margin-top: auto; /* Pushes this element to the bottom */
+}
+
+#messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background: red; */
+}
+
+ 
+
+
+/* #inputAndIcons {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+} */
+
+#message {
+  border: none;
+  outline: none;
+}
+.messSend {
+  align-self: flex-end;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.messRec {
+  align-self: flex-start;
+  padding: 10px;
+  font-weight: bold;
+}
+#chatIcons {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+.messSend {
+  align-self: flex-end;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.messRec {
+  align-self: flex-start;
+  padding: 10px;
+  font-weight: bold;
+}
+
+
+#options.animate {
+  left: 0; /* Move into view */
+  opacity: 1; /* Make visible */
+  visibility: visible; /* Ensure it's visible */
+}
+
+#content {
+  width: 100vw;
+  height: 100vh;
+  /* background: #007BFF; */
+  z-index: 0;
+  position: relative; /* Position for stacking context */
+}
+
+
+
+/* Scrollbar thumb */
+#message-container::-webkit-scrollbar-thumb {
+  background-color: darkgray; /* Color of the scrollbar thumb */
+  
+}
+
+/* Scrollbar track */
+#message-container::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+/* For Firefox */
+#message-container {
+  scrollbar-width: thin; /* Sets the scrollbar to be thin (default option) */
+  scrollbar-color: darkgray transparent; /* Color of the scrollbar thumb and track */
+
+}
+
+/* For Internet Explorer and Edge (legacy) */
+#message-container {
+  -ms-overflow-style: scrollbar; /* Sets the scrollbar to be visible */
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: column;
+}
+@font-face {
+  font-family: 'fontello';
+  src: url('fontello.woff2') format('woff2'),
+       url('fontello.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+h1 a {
+  color: red;
+}
+#mainContent {
+  position: relative;
+  z-index: 0;
+}
+.vericalBorder {
+  width: 2px;
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: lightblue; /* Example background color */
+  
+  /* Box shadow with white border effect */
+  box-shadow: 0 0 5px 7px white;
+}
+
+#friends_chat_account {
+  display: flex;
+  /* height: 90vh; */
+  /* background-color: aquamarine; */
+}
+
+#typingIndicator {
+  display: none;
+  color: green;
+}
+#inputAndIcons {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+  /* border-top: solid 1px #3f5efb;
+  box-shadow: 0px -4px 6px 0px rgba(63, 94, 251, 0.5); Adjusted shadow */
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+/* #messagesContainer {
+  margin-bottom: 10px;
+} */
+
+
+.message {
+  /* background-color: white; Example background color */
+  padding: 10px; /* Example padding */
+  border-radius: 5px; /* Optional rounded corners */
+  /* No margin for spacing */
+}
+
+.bu:last-child {
+  margin-top: auto; /* Push the last message to the bottom */
+}
+
+.message {
+  /* Style for individual messages */
+  /* background-color: white; Example background color */
+  padding: 10px; /* Example padding */
+  border-radius: 5px; /* Optional rounded corners */
+}
+
+
+/* Last child or message element */
+.message {
+  margin-top: auto; /* Pushes this element to the bottom */
+}
+
+
+/* Last child or message element */
+.message {
+  margin-top: auto; /* Pushes this element to the bottom */
+}
+
+#messages {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background: red; */
+}
+
+.bubble {
+  --r: 1em;  /* the radius */
+  --t: 1.5em; /* the size of the tail */
+  
+  align-self: flex-end;
+  max-width: 300px;
+  padding: 1em;
+  border-inline: var(--t) solid #0000;
+  border-radius: calc(var(--r) + var(--t))/var(--r);
+  mask: 
+    radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%) 
+      var(--_p) 100%/var(--t) var(--t) no-repeat,
+    linear-gradient(#000 0 0) padding-box;
+  /* background: linear-gradient(135deg,#FE6D00,#1384C5) border-box; */
+  color: #fff;
+  margin-bottom: 10px;
+}
+.left {
+  --_p: 0;
+  border-bottom-left-radius: 0 0;
+  align-self: end;
+  margin-left: 20px;
+  background: #87878a;
+}
+.right {
+  --_p: 100%;
+  border-bottom-right-radius: 0 0;
+  align-self: start;
+  margin-right: 20px;
+  background: #3d99c6;
+}
+
+
+/* #inputAndIcons {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+} */
+
+#message {
+  border: none;
+  outline: none;
+}
+.messSend {
+  align-self: flex-end;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.messRec {
+  align-self: flex-start;
+  padding: 10px;
+  font-weight: bold;
+}
+#chatIcons {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+.messSend {
+  align-self: flex-end;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.messRec {
+  align-self: flex-start;
+  padding: 10px;
+  font-weight: bold;
+}
+#options {
+  position: absolute;
+  left: -25vw; /* Start completely off-screen */
+  top: +10vh;
+  /* width: 25vw; Set width as 50% of viewport width */
+  height: 90vh; /* Fixed height */
+  /* background-color: #007BFF; Rectangle color */
+  transition: left 0.5s ease, opacity 0.5s ease; /* Animation effect */
+  opacity: 0; /* Start invisible */
+  visibility: hidden; /* Initially hidden */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#options.animate {
+  left: 0; /* Move into view */
+  opacity: 1; /* Make visible */
+  visibility: visible; /* Ensure it's visible */
+}
+
+#content {
+  width: 100vw;
+  height: 100vh;
+  /* background: #007BFF; */
+  z-index: 0;
+  position: relative; /* Position for stacking context */
+}
+
