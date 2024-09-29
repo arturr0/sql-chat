@@ -470,22 +470,23 @@ function handleIncomingMessage(message) {
 }
 
 function handleOtherMessage(user) {
-    // Use a selector to check if there's a div with data-username matching the user
-    let existingMessage = document.querySelector(`.unreadMessages[data-username="${user}"]`);
+    // Use a class selector with a dot for user
     
-    // Check if the user's unread message div already exists
-    if (!existingMessage) {
-        // Create a new unread message div for the specific user
+
+    // Check if the element exists
+    if (document.querySelector('unreadMessages') && document.querySelector('unreadMessages').getAttribute('data-username') != user) {
+        // Create a new unread message div
         const unreadMessage = document.createElement('div');
         unreadMessage.classList.add('unreadMessages');
-        unreadMessage.setAttribute('value', '1'); // Set initial value to 1
-        unreadMessage.setAttribute('data-username', user); // Set data-username for this user
-        unreadMessage.textContent = `${user} 1`; // Display initial unread count
+        unreadMessage.classList.add(user); // Just add the class name without a dot
+        unreadMessage.setAttribute('value', '0');
+        unreadMessage.setAttribute('data-username', user);
 
         // Append to the messages content
         document.getElementById("messagesContent").appendChild(unreadMessage);
     } else {
         // If the element exists, update its value
+        const existingMessage = document.querySelector(userSelector);
         let currentValue = parseInt(existingMessage.getAttribute('value'), 10) || 0; // Default to 0 if NaN
         currentValue++; // Increment the value
 
@@ -497,11 +498,9 @@ function handleOtherMessage(user) {
     // Update the overall message counter
     let messageValue = parseInt(messCounter.getAttribute('value'), 10) || 0; // Default to 0 if NaN
     messageValue++;
-    console.log(messageValue);
     messCounter.setAttribute('value', messageValue);
     messCounter.textContent = messageValue;
 }
-
 
 
     socket.on('send invitation', (data) => {

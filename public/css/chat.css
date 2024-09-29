@@ -5,6 +5,9 @@ body {
   margin: 0;
   color: white
 }
+label {
+  display: flex;
+}
 button {
   color: #fff;
   background-color: #38D2D2;
@@ -168,7 +171,22 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
   justify-content: end;
   margin: auto;
 }
-
+.counter {
+  margin-top: 10px;
+  margin-bottom: auto;
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,199,252,1) 100%);
+  border-radius: 50%;
+  width: 15px;    
+  height: 15px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: absolute;  
+  top: 0;
+  left: calc(20%); 
+}
 .dropdown-container {
   position: relative;
   display: inline-block;
@@ -190,13 +208,15 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
   position: absolute;
   width: 10vw;
   max-height: 0;
-  overflow: hidden; /* Prevents scrollbar by default */
+  overflow-y: auto; /* Prevents scrollbar by default */
   visibility: hidden;
   opacity: 0;
   transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #0483c9;
 }
+/*  */
 
 /* Show dropdown on hover with smooth transition */
 .dropdown-container:hover .dropdown-content,
@@ -238,13 +258,18 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
 }
 
 /* Enable scrolling only when necessary */
-.dropdown-container:hover .dropdown-content[data-overflow="true"] {
-  overflow-y: auto; /* Enable scrolling only if content exceeds max-height */
+/* Scrollbar Styling for Dropdowns */
+.dropdown-container:hover .dropdown-content,
+.dropdown-content:hover {
+  max-height: 200px;
+  visibility: visible;
+  opacity: 1;
+  overflow-y: auto; /* Enable scrolling on hover */
 }
 
-/* Styled Scrollbar for dropdown */
+/* Scrollbar styling for dropdown */
 .dropdown-content::-webkit-scrollbar {
-  width: 12px; /* Thicker scrollbar width */
+  width: 12px;
 }
 
 .dropdown-content::-webkit-scrollbar-track {
@@ -254,11 +279,17 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
 .dropdown-content::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
-  border: 3px solid #f1f1f1; /* Adds space around the thumb */
+  border: 3px solid #f1f1f1;
 }
 
 .dropdown-content::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+/* Firefox Scrollbar Styling */
+.dropdown-content {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
 /* Dropdown list items */
@@ -272,17 +303,12 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
 .dropdown-content div:hover {
   background-color: #ddd;
 }
-
-/* Smooth transition for background-color */
-.dropdown-content div {
-  transition: background-color 0.3s ease;
-}
-
 #friends_chat_account {
   display: flex;
 }
 .menuIcon {
   font-size: 40px;
+  z-index: 0;
 }
 #friends {
   width: calc(25vw - 1px);
@@ -599,6 +625,7 @@ background: linear-gradient(0deg, rgba(4,13,37,1) 12%, rgba(23,104,112,1) 85%);
 #message-container {
   scrollbar-width: thin; /* Sets the scrollbar to be thin (default option) */
   scrollbar-color: darkgray transparent; /* Color of the scrollbar thumb and track */
+  overflow-y: auto;
 
 }
 
