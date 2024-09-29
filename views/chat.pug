@@ -23,25 +23,21 @@ html(lang='en')
                     div#users
             #menu
                 div#menuDiv
-                    div#invitations.dropdown-container
-                        #messagesDropdown.dropdownToggle
-                            i.icon-mail.menuIcon
-                        #messagesContent.dropdown-content.dropdown
-                            .noMasseges(style="color: black;")
-                                | No Messages
                     div#messagesNotRead.dropdown-container
                         #invitesDropdown.dropdownToggle
+                            div#messCounter(value= "0").counter 0
+                            i.icon-mail.menuIcon
+                        #messagesContent.dropdown-content.dropdown(style="color: black;")
+                    div#invitations.dropdown-container
+                        #invitationsDropdown.dropdownToggle
+                            div#invCounter.counter(value= "0") 0
                             i.icon-user-add.menuIcon
-                        #messagesContent.dropdown-content.dropdown
-                            .noMasseges(style="color: black;")
-                                | No Ivites
-                                | No Ivites
-                    div#gruops.dropdown-container
+                        #invitationContent.dropdown-content.dropdown(style="color: black;")
+                    div#groups.dropdown-container
                         #groupsDropdown.dropdownToggle
+                            div#groupCounter.counter(value= "0") 0
                             i.icon-users.menuIcon
-                        #groupsContent.dropdown-content.dropdown
-                            .noMasseges(style="color: black;")
-                                | No Messages
+                        #groupsContent.dropdown-content.dropdown(style="color: black;")
             div#friends_chat_account
                 #friends
                     | Lorem ipsum dolor sit amet consectetur...
@@ -63,9 +59,9 @@ html(lang='en')
                             | No Storing Messages
                             .icon-user-secret.accIon
                         .accountContentText
-                            label(for="fileInput" class="custom-file-label" style="color: inherit;")
+                            label(for="fileInput" class="custom-file-label" style="color: inherit; cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%;")
                                 span Upload Avatar
-                            .icon-upload-1.accIon
+                                .icon-upload-1.accIon
                             input(type="file" id="fileInput" accept="image/*" style="display: none")
                         #logOut.accountContentText
                             | Log Out
